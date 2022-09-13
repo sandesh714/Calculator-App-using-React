@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+
 
 function App() {
+
+
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="calculator">
+        <div className="display">
+          { result ? <span>({result})</span> : ''} &nbsp;
+           {calc || "0"}
+        </div>
+        <div className="operators">
+          <button onClick = { ()=> updateCalc('/')}>/</button>
+          <button onClick = { ()=> updateCalc('*')}>*</button>
+          <button onClick = { ()=> updateCalc('+')}>+</button>
+          <button onClick = { ()=> updateCalc('-')}>-</button>
+
+          <button onClick={deleteLast}>DEL</button>
+        </div>
+        <div className="digits">
+          { createDigits() }
+          <button onClick = { ()=> updateCalc('0')}>0</button>
+          <button onClick = { ()=> updateCalc('.')}>.</button>
+          <button onClick = { calculate }>=</button>
+        </div>
+      </div>
+
     </div>
   );
 }
